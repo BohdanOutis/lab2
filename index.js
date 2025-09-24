@@ -4,7 +4,7 @@ var url = require('url');
 
 http.createServer(function (req, res) {
     var q = url.parse(req.url, true);
-    var filename = '.' + (q.pathname === '/' ? '/index.html' : q.pathname);
+    var filename = "." + (q.pathname === '/' ? '/index.html' : q.pathname);
 
     fs.readFile(filename, function (err, data) {
         if (err) {
@@ -15,6 +15,6 @@ http.createServer(function (req, res) {
         res.write(data);
         res.end();
     });
-}).listen(8080);
+}).listen(process.env.PORT || 8080);
 
-console.log('Server running at http://localhost:8080/');
+console.log('Server running...');
